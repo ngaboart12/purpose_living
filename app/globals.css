@@ -22,3 +22,20 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Styles for the masonry grid */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -10px; /* Adjust this based on your gap size */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 10px; /* Adjust this to create a gap between columns */
+  background-clip: padding-box;
+}
+
+/* Optional: styling for images inside masonry grid columns */
+.my-masonry-grid_column > div {
+  margin-bottom: 10px; /* Space between items */
+}
