@@ -7,9 +7,11 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { IoIosRefresh } from "react-icons/io";
+import { Button } from 'primereact/button';
 
 const LoginPage = () => {
     const [isShown, setIsShown] = useState(false);
+    const [isSaving,setIsSaving] = useState(false)
     const [error, setError] = useState('');
     const router = useRouter();
 
@@ -28,10 +30,14 @@ const LoginPage = () => {
     });
 
     const handleLogin = async (values: { email: string; password: string }) => {
+        setIsSaving(true)
+
         try {
             await signInWithEmailAndPassword(auth, values.email, values.password);
             router.push('/dashboard');
+            setIsSaving(false)
         } catch (err: any) {
+            setIsSaving(false)
             setError(err.message);
         }
     };
@@ -81,7 +87,7 @@ const LoginPage = () => {
                                 <ErrorMessage name="password" component="p" className="text-red-500" />
                             </div>
                             {error && <p className='text-red-500'>{error}</p>}
-                            <button type="submit" className='p-3 text-[20px] bg-[#FD7E14] rounded-[12px] text-white'>Sign In</button>
+                            <Button loading={isSaving} label='Sign In' className='p-3 text-[20px] bg-[#FD7E14] rounded-[12px] text-white'/>
                         </Form>
                     )}
                 </Formik>

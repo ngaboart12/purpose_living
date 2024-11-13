@@ -10,7 +10,7 @@ import Footer from '../components/Footer'
 
 const Home = () => {
     return (
-        <div className='flex flex-col px'>
+        <div className='flex flex-col text-black'>
             <div className='flex flex-col gap-[10px] px-[10px] md:px-[50px] lg:px-[100px]'>
                 <Navbar />
                 <div className='py-10 pt-40 w-full flex flex-col lg:flex-row gap-[40px] items-center'>
